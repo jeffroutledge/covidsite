@@ -6,9 +6,13 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json({ extended: false }));
 
 app.get('/', (req, res) => {
-    res.json({"Something defintely happened": "this is the main app route"});
+    res.json({ "Something defintely happened": "this is the main app route" });
     //TODO implement main app route
 });
+
+app.get('/all', (req, res) => {
+    res.send("oh no the covids real bad");
+})
 
 app.get('/location', (req, res) => {
     const location = +req.query.location;
