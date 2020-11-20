@@ -1,7 +1,24 @@
 # covidsite
 
-## For client app ##
-# Client
+## Setup
+
+1. Install Node JS [here](https://nodejs.org/en/).
+//TODO finish setup steps
+
+## Tutorials for technologies we're using
+
+* [Angular](https://angular.io/tutorial)
+* [Express JS](https://docs.microsoft.com/en-us/learn/modules/build-web-api-nodejs-express/)
+* [Additional Node JS tutorials](https://docs.microsoft.com/en-us/learn/paths/build-javascript-applications-nodejs/)
+
+## Ideas for how the architecture will work
+
+* [Express JS backend plan](https://www.coreycleary.me/project-structure-for-an-express-rest-api-when-there-is-no-standard-way)
+//TODO add image from article
+
+## For client app
+
+## Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
