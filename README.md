@@ -5,6 +5,10 @@
 1. Install Node JS [here](https://nodejs.org/en/).
 //TODO finish setup steps
 
+## Deployment
+
+[![Deploy to DO](https://mp-assets1.sfo2.digitaloceanspaces.com/deploy-to-do/do-btn-blue-ghost.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/jeffroutledge/covidsite/tree/main)
+
 ## Tutorials for technologies we're using
 
 * [Angular](https://angular.io/tutorial)
