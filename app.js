@@ -48,11 +48,8 @@ app.get('/', (req, res) => {
 
 app.get('/location', locationController.getStatsForLocation);
 
-// app.get('/location', (req, res) => {
-//     const location = +req.query.location;
-//     locationController.getStatsForLocation(req, res, location);
-//     console.log('made this new route work');
-//     //TODO get data for specific location id (will this be a token or something?)
-// })
+app.get('/all', (req, res) => {
+    res.send("oh no the covids real bad");
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
