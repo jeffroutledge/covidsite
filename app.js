@@ -19,7 +19,6 @@ const { callbackify } = require('util');
 app.use(bodyParser.json({ extended: false }));
 
 app.get('/', (req, res) => {
-    res.json({ "Something defintely happened": "this is the main app route" });
     //TODO implement main app route
     var result;
     var options = {
