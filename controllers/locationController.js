@@ -6,7 +6,7 @@ const getStatsForLocation = async (req, res) => {
         await covidService.getCovidStatsByCountry(req, res, location)
     } catch (e) {
         console.log(e.message)
-        res.sendStatus(500)
+        res.status(500).json(e)
     }
 }
 
