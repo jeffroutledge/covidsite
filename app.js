@@ -2,21 +2,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const http = require("https");
-const locationController = require('./controllers/locationController');
-// const options = {
-// 	"method": "GET",
-// 	"hostname": "api.covid19api.com",
-// 	"port": null,
-// 	"path": "/country/canada/status/confirmed",
-// 	// "headers": {
-//     //     "X-Access-Token": "5cf9dfd5-3449-485e-b5ae-70a60e997864",
-//     // }
-// };
+const locationRouter = require('./routes/locationRouter');
 
 let bodyParser = require('body-parser');
 const { callbackify } = require('util');
 
 app.use(bodyParser.json({ extended: false }));
+
+app.use('/api/location', locationRouter)
 
 app.get('/', (req, res) => {
     //TODO implement main app route
@@ -46,7 +39,7 @@ app.get('/', (req, res) => {
     
 });
 
-app.get('/location', locationController.getStatsForLocation);
+// app.get('/location', locationController.getStatsForLocation);
 
 app.get('/all', (req, res) => {
     res.send("oh no the covids real bad");

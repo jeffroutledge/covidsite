@@ -1,7 +1,7 @@
 const http = require('https');
 
 const getCovidStatsByCountry = async (req, res, location) => {
-    console.log('we got the service working');
+    console.log('we got the covid19 service working');
 
     var result;
     var options = {
