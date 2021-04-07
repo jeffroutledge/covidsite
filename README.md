@@ -18,7 +18,7 @@
 ## Ideas for how the architecture will work
 
 * [Express JS backend plan](https://www.coreycleary.me/project-structure-for-an-express-rest-api-when-there-is-no-standard-way)
-//TODO add image from article
+<img width="1513" alt="Screen Shot 2021-04-06 at 7 35 52 PM" src="https://user-images.githubusercontent.com/74328266/113797952-70efcf00-970f-11eb-919b-fc9fd2886648.png">
 
 ## For client app
 
@@ -49,8 +49,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Architecture diagram
-
-<img width="1513" alt="Screen Shot 2021-04-06 at 7 35 52 PM" src="https://user-images.githubusercontent.com/74328266/113797952-70efcf00-970f-11eb-919b-fc9fd2886648.png">
-
