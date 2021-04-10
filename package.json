@@ -24,5 +24,11 @@
       "/node_modules/",
       "<rootDir>/client/"
     ]
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "tsc": "^1.20150623.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.4"
   }
 }
