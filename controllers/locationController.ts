@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import Covid19Service from "../services/Covid19Service";
 import Controller from "./controller.interface";
 import Location from "../Models/Location";
@@ -28,7 +28,7 @@ class LocationController implements Controller{
             res.status(200).json(covidStats);
         } catch (e) {
             console.log(e.message);
-            res.status(500).json(e);
+            res.status(500).json(e.message);
         }
     }
 }

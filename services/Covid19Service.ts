@@ -13,7 +13,7 @@ class Covid19Service {
     }
     public async getWorldCovidStatsForWeek() {
         const dateTo = moment();
-        const dateFrom = dateTo.subtract(1, "week");
+        const dateFrom = moment().subtract(1, "week");
 
         const result = await new Covid19DataProvider().getWorldCovid19StatsForLastWeek(dateFrom.format(), dateTo.format());
         
