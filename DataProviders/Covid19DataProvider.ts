@@ -28,7 +28,6 @@ class Covid19DataProvider {
     }
     public async getWorldCovid19StatsForLastWeek(dateFrom: string, dateTo: string) {
         const result = await axios.get(`/world?from=${dateFrom}&to=${dateTo}`, this.config);
-        console.log(`/world?from=${dateFrom}&to=${dateTo}`);
         return result.data;
     }
 }
