@@ -1,9 +1,9 @@
-import express from "express";
-import Covid19Service from "../services/Covid19Service";
-import Controller from "./controller.interface";
+import express from 'express';
+import Covid19Service from '../services/Covid19Service';
+import Controller from './controller.interface';
 
 class WorldController implements Controller {
-  public path = "/world";
+  public path = '/world';
   public router = express.Router();
 
   constructor() {

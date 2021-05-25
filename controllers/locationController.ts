@@ -1,7 +1,7 @@
-import express from "express";
-import Covid19Service from "../services/Covid19Service";
-import Controller from "./controller.interface";
-import Location from "../Models/Location";
+import express from 'express';
+import Covid19Service from '../services/Covid19Service';
+import Controller from './controller.interface';
+import Location from '../Models/Location';
 
 class LocationController implements Controller{
     public path = '/location';
