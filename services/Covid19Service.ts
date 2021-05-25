@@ -12,8 +12,8 @@ class Covid19Service {
         return result;  
     }
     public async getWorldCovidStatsForWeek() {
-        const dateTo = moment();
-        const dateFrom = moment().subtract(1, "week");
+        const dateTo = moment().subtract(1, "hour").utc(); // api can't function within an hour of current time, feex
+        const dateFrom = moment().subtract(1, "month").subtract(1, "hour").utc();
 
         const result = await new Covid19DataProvider().getWorldCovid19StatsForLastWeek(dateFrom.format(), dateTo.format());
         
