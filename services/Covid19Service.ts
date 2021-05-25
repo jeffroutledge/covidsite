@@ -1,8 +1,7 @@
-import express from "express";
 import axios from 'axios';
 
 class Covid19Service {
-    public async getCovidStatsByCountry (req: express.Request, res: express.Response, location: string): Promise<any>
+    public async getCovidStatsByCountry (location: string): Promise<any>
     {
         const config = {
             baseURL: 'https://api.covid19api.com',

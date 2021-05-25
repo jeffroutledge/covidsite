@@ -17,7 +17,7 @@ class LocationController implements Controller{
     getStatsForLocation = async(req: express.Request, res: express.Response) => {
         try {
             const location = req?.query?.location?.toString() ?? 'canada';
-            const covidStats = await new Covid19Service().getCovidStatsByCountry(req, res, location);
+            const covidStats = await new Covid19Service().getCovidStatsByCountry(location);
             res.status(200).json(covidStats);
         } catch (e) {
             console.log(e.message);
