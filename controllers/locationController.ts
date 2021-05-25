@@ -1,8 +1,8 @@
 import * as express from "express";
 import Covid19Service from "../services/Covid19Service";
-import asyncWrapper from "async-wrapper-express-ts";
+import Controller from "./controller.interface";
 
-class LocationController {
+class LocationController implements Controller{
     public path = '/location';
     public router = express.Router();
 

@@ -7,7 +7,6 @@ class Covid19Service {
     {
         const config = {
             baseURL: 'https://api.covid19api.com',
-            url: `/dayone/country/${location}/status/confirmed/live`,
             timeout: 1000,
             headers: {
                 'content-type': 'JSON',
