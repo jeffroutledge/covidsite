@@ -1,20 +1,12 @@
-import axios from 'axios';
+import Covid19DataProvider from '../DataProviders/Covid19DataProvider';
+import Location from '../Models/Location';
 
 class Covid19Service {
-    public async getCovidStatsByCountry (location: string): Promise<any>
+    public async getCovidStatsByLocation (location: Location): Promise<any>
     {
-        const config = {
-            baseURL: 'https://api.covid19api.com',
-            timeout: 1000,
-            headers: {
-                'content-type': 'JSON',
-                'X-Access-Token': '5cf9dfd5-3449-485e-b5ae-70a60e997864',
-            }
-        };
+        const result = await new Covid19DataProvider().getCovid19StatsByCountry(location.Country);
 
-        let result = await axios.get(`/dayone/country/${location}/status/confirmed/live`, config)
-
-        return result.data;
+        return result;
     }
 }
 
