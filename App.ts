@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import Controller from './controllers/controller.interface';
 
 class App {
@@ -15,6 +16,7 @@ class App {
 
     private initializeMiddlewares() {
         this.app.use(express.json());
+        this.app.use(cors())
       }
 
       private initializeControllers(controllers: any[]) {

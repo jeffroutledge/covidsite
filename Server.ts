@@ -7,7 +7,7 @@ const app = new App(
     new LocationController(),
     new WorldController(),
   ],
-  3000,
+  8080,
 );
 
 app.listen();
