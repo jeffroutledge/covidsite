@@ -1,5 +1,4 @@
-import express, { response } from "express";
-import http from "https";
+import express from "express";
 import axios from 'axios';
 
 class Covid19Service {
