@@ -19,12 +19,13 @@ class LocationController implements Controller{
         try {
             const location: Location = {
                 City : '',
-                Territory : '',
+                Territory : 'ALBERTA',
                 Country : req?.query?.location?.toString() ?? 'canada',
                 XCoord : 0.00,
                 YCoord : 0.00
             }
-            const covidStats = await new Covid19Service().getCovidStatsByLocation(location);
+            const covidStats = await new Covid19Service().getCovidStatsByCanadaProvTerritory(location);
+            console.log(covidStats);
             res.status(200).json(covidStats);
         } catch (e) {
             console.log(e.message);

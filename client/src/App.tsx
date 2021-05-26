@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import World from './World';
+import ProvStats from './ProvStats';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         >
           Learn React
         </a>
-        <World />
+         <World />
+         <ProvStats />
       </header>
     </div>
   );
