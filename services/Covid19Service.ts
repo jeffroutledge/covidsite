@@ -1,4 +1,5 @@
 import Covid19DataProvider from '../DataProviders/Covid19DataProvider';
+import CanadaProvCovid19DataProvider from '../DataProviders/CanadaProvCovid19DataProvider';
 import Location from '../Models/Location';
 import moment from 'moment';
 
@@ -17,6 +18,11 @@ class Covid19Service {
 
         const result = await new Covid19DataProvider().getWorldCovid19StatsForLastWeek(dateFrom.format(), dateTo.format());
         
+        return result;
+    }
+    public async getCovidStatsByCanadaProvTerritory (location: Location): Promise<any>
+    {
+        const result = await new CanadaProvCovid19DataProvider().getDataForProv(location.Territory);
         return result;
     }
 }

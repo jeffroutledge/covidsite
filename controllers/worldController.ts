@@ -21,7 +21,7 @@ class WorldController implements Controller {
         res.status(200).json(worldCovidStats);
       }
       catch (e) {
-        console.log(e.message);
+        //console.log(e.message);
         res.status(500).json(e.message);
       }
   }
