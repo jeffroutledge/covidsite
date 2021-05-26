@@ -19,7 +19,7 @@ class LocationController implements Controller{
         try {
             const location: Location = {
                 City : '',
-                Territory : 'ALBERTA',
+                Territory : 'MANITOBA',
                 Country : req?.query?.location?.toString() ?? 'canada',
                 XCoord : 0.00,
                 YCoord : 0.00
