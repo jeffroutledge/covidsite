@@ -9,20 +9,21 @@ export default class ProvStats extends Component<{}, {territoryStats: TerritoryS
                 .then(response => response.json())
                 .then(result => {
                     console.log(result['features'][0]['attributes']['NAME']);
-                    let tStats = new TerritoryStats(
-                        (result['features'][0]['attributes']['OBJECTID']),
-                        (result['features'][0]['attributes']['NAME']),
-                        (result['features'][0]['attributes']['Recovered']),
-                        (result['features'][0]['attributes']['Tests']),
-                        (result['features'][0]['attributes']['Last_Updated']),
-                        (result['features'][0]['attributes']['SourceURL']),
-                        (result['features'][0]['attributes']['ActiveCases']),
-                        (result['features'][0]['attributes']['Hospitalized']),
-                        (result['features'][0]['attributes']['ICU']),
-                        (result['features'][0]['attributes']['ICUVents']),
-                        (result['features'][0]['attributes']['Deaths']),
-                        (result['features'][0]['attributes']['Case_Total']),
-                        (result['features'][0]['attributes']['Vaccinated']));
+                    const tStats: TerritoryStats = {
+                        ObjectID : result['features'][0]['attributes']['OBJECTID'],
+                        Name : result['features'][0]['attributes']['NAME'],
+                        Recovered : result['features'][0]['attributes']['Recovered'],
+                        Tests : result['features'][0]['attributes']['Tests'],
+                        LastUpdated : result['features'][0]['attributes']['Last_Updated'],
+                        SourceURL : result['features'][0]['attributes']['SourceURL'],
+                        ActiveCases : result['features'][0]['attributes']['ActiveCases'],
+                        Hospitalized : result['features'][0]['attributes']['Hospitalized'],
+                        ICU : result['features'][0]['attributes']['ICU'],
+                        ICUVentilator : result['features'][0]['attributes']['ICUVents'],
+                        Deaths : result['features'][0]['attributes']['Deaths'],
+                        CaseTotal : result['features'][0]['attributes']['Case_Total'],
+                        Vaccinated : result['features'][0]['attributes']['Vaccinated'],
+                    }
                     this.setState({territoryStats: tStats});
                 })
                 .catch(e => {
