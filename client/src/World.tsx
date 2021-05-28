@@ -8,7 +8,6 @@ export default class World extends Component<{}, {world: string[]}> {
             fetch('http://localhost:8080/world')
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     this.setState({world: result})
                 })
                 .catch(e => {

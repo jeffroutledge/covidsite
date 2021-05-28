@@ -2,8 +2,8 @@ interface Location {
     City: string,
     Territory: string,
     Country: string,
-    XCoord: number,
-    YCoord: number
+    Longitude: number,
+    Latitude: number
 }
 
 export default Location;
