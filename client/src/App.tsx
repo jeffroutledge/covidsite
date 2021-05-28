@@ -5,18 +5,40 @@ import ProvStats from './ProvStats';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+let latitude : number;
+let longitude : number;
+let data: any;
 class App extends Component {
     constructor(props: any) {
         super(props);
         this.state = {
+            lat: 0,
+            lon: 0
         };
-    }
+    };
 
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //     latitude = position.coords.latitude;
+    //     longitude = position.coords.longitude;
+    //     const data = {longitude, latitude};
+    //     console.log('Latitude = ' + data.latitude);
+    //     console.log('Longitude = ' + data.longitude);
+    //     });
+    // };
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-    });
+        navigator.geolocation.getCurrentPosition((position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        data = {longitude, latitude};
+        });
+        this.setState({
+            lat: data.latitude,
+            lon: data.longitude
+        });
+    };
+    componentWillUnmount() {
+        
     }
     render(): any {
         return (
@@ -35,7 +57,7 @@ class App extends Component {
                     Learn React
                     </a>
                     <World />
-                    <ProvStats />
+                    <ProvStats latitude = {data.latitude} longitude = {data.longitude} />
                 </header>
             </div>
         )
