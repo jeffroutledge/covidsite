@@ -5,41 +5,27 @@ import ProvStats from './ProvStats';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-let latitude : number;
-let longitude : number;
-
 class App extends Component<{}, {lat: any, lon: any}> {
     constructor(props: any) {
         super(props);
         navigator.geolocation.getCurrentPosition((position) => {
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
+          this.state = ({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude
+          });
         });
-        this.state = {
-            lat: latitude,
-            lon: longitude
-        };
     };
 
     // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //     latitude = position.coords.latitude;
-    //     longitude = position.coords.longitude;
-    //     const data = {longitude, latitude};
-    //     console.log('Latitude = ' + data.latitude);
-    //     console.log('Longitude = ' + data.longitude);
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //       latitude = position.coords.latitude;
+    //       longitude = position.coords.longitude;
     //     });
-    // };
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition((position) => {
-          latitude = position.coords.latitude;
-          longitude = position.coords.longitude;
-        });
-        this.setState({
-            lat: latitude,
-            lon: longitude
-        });
-    }
+    //     this.setState({
+    //         lat: latitude,
+    //         lon: longitude
+    //     });
+    // }
     componentWillUnmount() {
         
     }
