@@ -3,17 +3,10 @@ import { Component } from 'react';
 import TerritoryStats from './Models/TerritoryStats';
 
 export default class ProvStats extends Component<{longitude: any, latitude: any}, {territoryStats: TerritoryStats}> {
-    private latitude: number = 0;
-    private longitude: number = 0;
-
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(async (position) => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-            console.log(this.latitude, position.coords.latitude)
-            this.setState(await this.getLocationFromPosition(position.coords.latitude, position.coords.longitude));
+            this.setState({territoryStats: await this.getLocationFromPosition(position.coords.latitude, position.coords.longitude)});
         });
-        // this.setState({...this.state});
     }
 
     async getLocationFromPosition(latitude: number, longitude: number): Promise<any> {
@@ -21,9 +14,7 @@ export default class ProvStats extends Component<{longitude: any, latitude: any}
         try {
             const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
-            console.log(url);
             const tStats: TerritoryStats = result;
-            console.log(tStats)
             return tStats;
         }
         catch (e) {
