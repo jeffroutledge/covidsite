@@ -19,6 +19,13 @@ export default class World extends Component<{}, {world: string[]}> {
             console.log(e);
         }
     }
+
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
+    }
     
 
     render() {

@@ -3,10 +3,21 @@ import { Component } from 'react';
 import TerritoryStats from './Models/TerritoryStats';
 
 export default class ProvStats extends Component<{longitude: any, latitude: any}, {territoryStats: TerritoryStats}> {
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-            this.setState({territoryStats: await this.getLocationFromPosition(position.coords.latitude, position.coords.longitude)});
-        });
+    async componentDidMount(): Promise<void> {
+        // navigator.geolocation.getCurrentPosition(async (position) => {
+        //     this.setState({territoryStats: await this.getLocationFromPosition(position.coords.latitude, position.coords.longitude)});
+        // });
+        this.setState({territoryStats: await this.getLocationFromPosition(this.props.latitude, this.props.longitude)});
+    }
+    async componentWillReceiveProps(nextProps: {latitude: any, longitude: any}): Promise<void> {
+        this.setState({territoryStats: await this.getLocationFromPosition(nextProps.latitude, nextProps.longitude)});
+        console.log(nextProps.latitude);
+    }
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 
     async getLocationFromPosition(latitude: number, longitude: number): Promise<any> {
