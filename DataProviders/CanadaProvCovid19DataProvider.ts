@@ -9,7 +9,6 @@ class CanadaProvCovid19DataProvider {
         }
     };
     public async getDataForProv(provTerritory: String) {
-        // const result = await axios.get(`query?where=NAME%20%3D%20\'${provTerritory}\'&outFields=OBJECTID,NAME,Recovered,Tests,Last_Updated,SourceURL,ActiveCases,Hospitalized,ICU,ICUVent,Deaths,Case_Total,GlobalID_2,Vaccinated,SecondURL,ThirdURL,Abbreviation&returnGeometry=false&outSR=&f=json`, this.config);
         const result = await axios.get(`query?where=NAME%20%3D%20\'${provTerritory}\'&outFields=OBJECTID,NAME,Recovered,Tests,Last_Updated,SourceURL,ActiveCases,Hospitalized,ICU,ICUVent,Deaths,Case_Total,GlobalID_2,Vaccinated,Abbreviation&returnGeometry=false&outSR=&f=json`, this.config);
         return result.data;
     }
