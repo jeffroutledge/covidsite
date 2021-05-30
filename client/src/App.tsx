@@ -6,28 +6,34 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 class App extends Component<{}, {lat: any, lon: any}> {
+    state = {lat: 50.46568, lon: -104.61759};
     constructor(props: any) {
         super(props);
-        navigator.geolocation.getCurrentPosition((position) => {
-          this.state = ({
-            lat: position.coords.latitude,
-            lon: position.coords.longitude
-          });
-        });
+        // navigator.geolocation.getCurrentPosition((position) => {
+        //     //console.log(this.state.lat);
+        //   this.setState({
+        //     lat: position.coords.latitude,
+        //     lon: position.coords.longitude
+        //   });
+        // });
     };
 
-    // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //       latitude = position.coords.latitude;
-    //       longitude = position.coords.longitude;
-    //     });
-    //     this.setState({
-    //         lat: latitude,
-    //         lon: longitude
-    //     });
-    // }
-    componentWillUnmount() {
+    componentDidMount() {
         
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log(this.state.lat);
+            this.setState({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
+            });
+            console.log(this.state.lat);
+        });
+    }
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
     render(): any {
         return (
