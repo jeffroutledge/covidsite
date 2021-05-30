@@ -23,6 +23,14 @@ export default class World extends Component<{}, {world: any[]}> {
     private getTime(date?: Date) {
         return date != null ? date.getTime() : 0;
     }
+    
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
+    }
+    
 
     render() {
         const data = this?.state?.world;
