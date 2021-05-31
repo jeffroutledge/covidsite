@@ -3,12 +3,8 @@ import Covid19Service from '../services/Covid19Service';
 import LocationService from '../services/LocationService';
 import Controller from './controller.interface';
 import Location from '../Models/Location';
-<<<<<<< HEAD
-import CovidStatsModel from '../Models/TerritoryStats';
-import CanadaNationalStats from '../Models/CanadaNationalStats';
-=======
 import TerritoryStats from '../Models/TerritoryStats';
->>>>>>> 865a63e2610dc73bf15e11f25e34e3be373594eb
+import CanadaNationalStats from '../Models/CanadaNationalStats';
 
 class LocationController implements Controller{
     public path = '/location';
@@ -63,7 +59,7 @@ class LocationController implements Controller{
                         }
                         const covidStatsNationalJson = JSON.stringify(covidStatsNational); 
                         const resultTerritory  = await new Covid19Service().getCovidStatsByCanadaProvTerritory(location);
-                        const covidStatsTerritory: CovidStatsModel = {
+                        const covidStatsTerritory: TerritoryStats = {
                             ObjectID : resultTerritory['features'][0]['attributes']['OBJECTID'],
                             Name : resultTerritory['features'][0]['attributes']['NAME'],
                             Recovered : resultTerritory['features'][0]['attributes']['Recovered'],
