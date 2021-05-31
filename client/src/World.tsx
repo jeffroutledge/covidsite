@@ -35,11 +35,8 @@ export default class World extends Component<{}, {world: any[]}> {
     render() {
         const data = this?.state?.world;
         const sortedData = data?.slice()?.sort((a: any, b: any) => {
-            console.log(a.Date);
             return this.getTime(new Date(a.Date)) - this.getTime(new Date(b.Date));
         });
-        console.log(data);
-        console.log(sortedData);
         const renderLineChart = (
             <LineChart width={500} height={300} data={sortedData} margin={{ top: 15, right: 10, left: 20, bottom: 25 }}>
                 <XAxis dataKey="Date">

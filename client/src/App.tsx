@@ -5,6 +5,7 @@ import ProvStats from './ProvStats';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import div, { Col, Container, Row } from 'react-bootstrap';
+import NationalStats from './NationalStats';
 
 class App extends Component<{}, {lat: any, lon: any}> {
     state = {lat: 0, lon: 0};
@@ -45,17 +46,6 @@ class App extends Component<{}, {lat: any, lon: any}> {
                         crossOrigin="anonymous"
                     />
                     <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                    Learn React
-                    </a>
                     <Container>
                         <Row>
                             <Col><World /></Col>
@@ -65,8 +55,11 @@ class App extends Component<{}, {lat: any, lon: any}> {
                             <Col><World /></Col>
                             <Col><World /></Col>
                         </Row>
+                        <Row>
+                            <Col><NationalStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
+                            <Col><ProvStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
+                        </Row>
                     </Container>
-                    <ProvStats latitude={this.state.lat} longitude={this.state.lon} />
                 </header>
             </div>
         )
