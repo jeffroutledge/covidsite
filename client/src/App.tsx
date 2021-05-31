@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 class App extends Component<{}, {lat: any, lon: any}> {
-    state = {lat: 50.46568, lon: -104.61759};
+    state = {lat: 0, lon: 0};
     constructor(props: any) {
         super(props);
         // navigator.geolocation.getCurrentPosition((position) => {
@@ -21,12 +21,10 @@ class App extends Component<{}, {lat: any, lon: any}> {
     componentDidMount() {
         
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log(this.state.lat);
             this.setState({
                 lat: position.coords.latitude,
                 lon: position.coords.longitude
             });
-            console.log(this.state.lat);
         });
     }
     componentWillUnmount() {
