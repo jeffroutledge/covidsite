@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'djcovidsite'
           slot-name: 'production'
-          publish-profile: \${{ secrets.AzureAppService_PublishProfile_1234 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_152BDE8ACD9049A498455CA2D6A01605 }}
           package: .
