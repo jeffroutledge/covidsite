@@ -12,6 +12,9 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "bootstrap": "^4.6.0",
+    "d3-array": "^2.12.1",
+    "d3-format": "^3.0.0",
+    "d3-scale": "^3.3.0",
     "react": "^16.14.0",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^16.14.0",
@@ -43,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/d3-array": "^2.12.1",
+    "@types/d3-format": "^2.0.0",
+    "@types/d3-scale": "^3.3.0"
   }
 }

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import div, { Col, Container, Row } from 'react-bootstrap';
 import NationalStats from './NationalStats';
+import ProvGraph from './ProvGraph';
 
 class App extends Component<{}, {lat: any, lon: any}> {
     state = {lat: 0, lon: 0};
@@ -48,8 +49,13 @@ class App extends Component<{}, {lat: any, lon: any}> {
                     <img src={logo} className="App-logo" alt="logo" />
                     <Container>
                         <Row>
-                            <Col><World /></Col>
-                            <Col><World /></Col>
+                            <Col>
+                                <h6>World Deaths:</h6>
+                                <World />
+                            </Col>
+                            <Col>
+                                <ProvGraph latitude={this.state.lat} longitude={this.state.lon}/>
+                            </Col>
                         </Row>
                         <Row>
                             <Col><World /></Col>

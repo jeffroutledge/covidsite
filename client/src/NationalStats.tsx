@@ -7,7 +7,6 @@ export default class NationalStats extends Component<{longitude: any, latitude: 
     async componentWillReceiveProps(nextProps: {latitude: any, longitude: any}): Promise<void> {
         if (nextProps.latitude !== 0 && nextProps.longitude !== 0) {
             this.setState({canadaNationalStats: await this.getLocationFromPosition(nextProps.latitude, nextProps.longitude)});
-            console.log(nextProps.latitude);
         }
     }
     componentWillUnmount() {
@@ -22,9 +21,7 @@ export default class NationalStats extends Component<{longitude: any, latitude: 
         try {
             const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=nationalstats`;
             let result: any = await (await fetch(url)).json();//.json();
-            console.log(result);
             const tStats: CanadaNationalStats = result;
-            console.log(tStats);
             return tStats;
         }
         catch (e) {
