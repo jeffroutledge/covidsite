@@ -41,7 +41,7 @@ export default class World extends Component<{}, {world: any[]}> {
         console.log(data);
         console.log(sortedData);
         const renderLineChart = (
-            <LineChart width={1000} height={300} data={sortedData} margin={{ top: 15, right: 10, left: 20, bottom: 25 }}>
+            <LineChart width={500} height={300} data={sortedData} margin={{ top: 15, right: 10, left: 20, bottom: 25 }}>
                 <XAxis dataKey="Date">
                     <Label value="Date" offset={0} position="insideBottom" />
                 </XAxis>

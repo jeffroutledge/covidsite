@@ -4,6 +4,7 @@ import World from './World';
 import ProvStats from './ProvStats';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import div, { Col, Container, Row } from 'react-bootstrap';
 
 class App extends Component<{}, {lat: any, lon: any}> {
     state = {lat: 0, lon: 0};
@@ -37,6 +38,12 @@ class App extends Component<{}, {lat: any, lon: any}> {
         return (
             <div className="App">
                 <header className="App-header">
+                    <link
+                        rel="stylesheet"
+                        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                        crossOrigin="anonymous"
+                    />
                     <img src={logo} className="App-logo" alt="logo" />
                     <p>
                         Edit <code>src/App.tsx</code> and save to reload.
@@ -49,7 +56,16 @@ class App extends Component<{}, {lat: any, lon: any}> {
                     >
                     Learn React
                     </a>
-                    <World />
+                    <Container>
+                        <Row>
+                            <Col><World /></Col>
+                            <Col><World /></Col>
+                        </Row>
+                        <Row>
+                            <Col><World /></Col>
+                            <Col><World /></Col>
+                        </Row>
+                    </Container>
                     <ProvStats latitude={this.state.lat} longitude={this.state.lon} />
                 </header>
             </div>
