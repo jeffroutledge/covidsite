@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, Legend, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Label, Tooltip } from 'recharts';
 
-export default class World extends Component<{}, {world: string[]}> {
+export default class World extends Component<{}, {world: any[]}> {
     componentDidMount() {
         this.setState({...this.state});
         try {
@@ -20,6 +20,10 @@ export default class World extends Component<{}, {world: string[]}> {
         }
     }
 
+    private getTime(date?: Date) {
+        return date != null ? date.getTime() : 0;
+    }
+    
     componentWillUnmount() {
         // fix Warning: Can't perform a React state update on an unmounted component
         this.setState = (state,callback)=>{
@@ -29,14 +33,21 @@ export default class World extends Component<{}, {world: string[]}> {
     
 
     render() {
+        const data = this?.state?.world;
+        const sortedData = data?.slice()?.sort((a: any, b: any) => {
+            console.log(a.Date);
+            return this.getTime(new Date(a.Date)) - this.getTime(new Date(b.Date));
+        });
+        console.log(data);
+        console.log(sortedData);
         const renderLineChart = (
-            <LineChart width={1000} height={500} data={this?.state?.world}  >
-                <XAxis label={"Date"}/>
-                <YAxis width={300} type="number" domain={[0, 4000000]} mirror={true}/>
+            <LineChart width={1000} height={300} data={sortedData} margin={{ top: 15, right: 10, left: 20, bottom: 25 }}>
+                <XAxis dataKey="Date">
+                    <Label value="Date" offset={0} position="insideBottom" />
+                </XAxis>
+                <YAxis width={150} type="number" domain={['dataMin - 10000', 'dataMax + 10000']}/>
                 <Tooltip />
-                <Legend />
                 <Line type="monotone" dataKey="TotalDeaths" stroke="#82ca9d" />
-                {/* <Line type="monotone" dataKey="NewDeaths" stroke="#8884d8" /> */}
             </LineChart>
         );
         return renderLineChart;
