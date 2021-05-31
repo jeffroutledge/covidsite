@@ -3,8 +3,12 @@ import Covid19Service from '../services/Covid19Service';
 import LocationService from '../services/LocationService';
 import Controller from './controller.interface';
 import Location from '../Models/Location';
+<<<<<<< HEAD
 import CovidStatsModel from '../Models/TerritoryStats';
 import CanadaNationalStats from '../Models/CanadaNationalStats';
+=======
+import TerritoryStats from '../Models/TerritoryStats';
+>>>>>>> 865a63e2610dc73bf15e11f25e34e3be373594eb
 
 class LocationController implements Controller{
     public path = '/location';
