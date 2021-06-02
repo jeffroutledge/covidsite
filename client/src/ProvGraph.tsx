@@ -28,7 +28,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getCovidStatsByLocation(longitude: any, latitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location/provgraph?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
+            const url = `/location/location/provgraph?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             return result;
         }
@@ -40,7 +40,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getLocationFromPosition(longitude: any, latitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
+            const url = `/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             return result;
         }

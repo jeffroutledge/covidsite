@@ -20,7 +20,7 @@ export default class ProvStats extends Component<{longitude: any, latitude: any}
     async getLocationFromPosition(longitude: any, latitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location/provstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
+            const url = `/location/provstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             const tStats: TerritoryStats = result;
             return tStats;

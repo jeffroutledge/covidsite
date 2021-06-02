@@ -5,7 +5,7 @@ export default class World extends Component<{}, {world: any[]}> {
     async componentDidMount() {
         this.setState({...this.state});
         try {
-            let result: any = await (await fetch('http://localhost:8080/world')).json();
+            let result: any = await (await fetch('/world')).json();
             this.setState({world: result});
         }
         catch (e) {

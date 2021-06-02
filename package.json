@@ -4,7 +4,10 @@
   "description": "",
   "main": "Server.ts",
   "scripts": {
-    "start": "nodemon Server.ts"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "nodemon Server.ts",
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
     "@types/cors": "^2.8.10",
     "async-wrapper-express-ts": "^3.1.6",
     "axios": "^0.21.1",
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mocha": "^8.2.1",
