@@ -7,7 +7,7 @@ import TerritoryStats from '../Models/TerritoryStats';
 import CanadaNationalStats from '../Models/CanadaNationalStats';
 
 class LocationController implements Controller{
-    public path = '/location';
+    public path = 'api/v1/location';
     public router = express.Router();
     public nationalStatsPath = '/location/natstats';
     public provGraphPath = '/location/provgraph';

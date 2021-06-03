@@ -1,9 +1,9 @@
 import { Component } from 'react';
-// import { NoSubstitutionTemplateLiteral } from 'typescript';
 import TerritoryStats from './Models/TerritoryStats';
 
 export default class ProvStats extends Component<{longitude: any, latitude: any}, {territoryStats: TerritoryStats}> {
     async componentDidMount(): Promise<void> {
+        this.setState({...this.state})
     }
     async componentDidUpdate(prevProps: {longitude: any, latitude: any}): Promise<void> {
         if (prevProps.longitude !== this.props.longitude && prevProps.latitude !== this.props.latitude) {
@@ -20,7 +20,7 @@ export default class ProvStats extends Component<{longitude: any, latitude: any}
     async getLocationFromPosition(longitude: any, latitude: number): Promise<any> {
 
         try {
-            const url = `/location/provstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
+            const url = `/api/v1/location/provstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             const tStats: TerritoryStats = result;
             return tStats;
