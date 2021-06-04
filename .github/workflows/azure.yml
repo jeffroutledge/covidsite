@@ -26,10 +26,6 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-          cd client
-          npm install
-          npm run build --if-present
-          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -56,5 +52,5 @@ jobs:
         with:
           app-name: 'djcovidsite'
           slot-name: 'production'
-          publish-profile: \${{ secrets.AzureAppService_PublishProfile_1234 }}
+          publish-profile: \${{ secrets.AzureAppService_PublishProfile_152BDE8ACD9049A498455CA2D6A01605 }}
           package: .
