@@ -28,12 +28,9 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getCovidStatsByLocation(longitude: any, latitude: number): Promise<any> {
 
         try {
-<<<<<<< HEAD
-            const url = `/location/location/provgraph?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
-=======
-            const url = `/api/v1/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=provgraph`;
->>>>>>> Added proxy, got it almost working. Server should now return build site to users.
-            let result: any = await (await fetch(url)).json();//.json();
+            const url = `/api/v1/location/provgraph?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
+
+            let result: any = await (await fetch(url)).json();
             return result;
         }
         catch (e) {
@@ -44,11 +41,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getLocationFromPosition(longitude: any, latitude: number): Promise<any> {
 
         try {
-<<<<<<< HEAD
-            const url = `/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
-=======
-            const url = `/api/v1/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=locationdata`;
->>>>>>> Added proxy, got it almost working. Server should now return build site to users.
+            const url = `/api/v1/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             return result;
         }
@@ -66,12 +59,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
 
     private getDataKeys(): Object {
         let destinationObj = [{}];
-<<<<<<< HEAD
         Object.assign(destinationObj, this?.state?.prov.features[0].attributes);
-=======
-        const data = this?.state?.prov?.features;
-        Object.assign(destinationObj, this?.state?.prov?.features[0].attributes);
->>>>>>> Added proxy, got it almost working. Server should now return build site to users.
         const dataKeys = Object.keys(destinationObj);
         let dropDownMenuItems: any[] = [];
         for(var i = 0; i < dataKeys.length; i++) {

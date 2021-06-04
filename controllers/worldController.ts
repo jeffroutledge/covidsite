@@ -3,7 +3,7 @@ import Covid19Service from '../services/Covid19Service';
 import Controller from './controller.interface';
 
 class WorldController implements Controller {
-  public path = '/api/v1/world';
+  public path = '/world';
   public router = express.Router();
 
   constructor() {
