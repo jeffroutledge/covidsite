@@ -4,9 +4,12 @@ import World from './World';
 import ProvStats from './ProvStats';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import div, { Col, Container, Row } from 'react-bootstrap';
+import NationalStats from './NationalStats';
+import ProvGraph from './ProvGraph';
 
 class App extends Component<{}, {lat: any, lon: any}> {
-    state = {lat: 50.46568, lon: -104.61759};
+    state = {lat: 0, lon: 0};
     constructor(props: any) {
         super(props);
         // navigator.geolocation.getCurrentPosition((position) => {
@@ -21,12 +24,10 @@ class App extends Component<{}, {lat: any, lon: any}> {
     componentDidMount() {
         
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log(this.state.lat);
             this.setState({
                 lat: position.coords.latitude,
                 lon: position.coords.longitude
             });
-            console.log(this.state.lat);
         });
     }
     componentWillUnmount() {
@@ -39,20 +40,32 @@ class App extends Component<{}, {lat: any, lon: any}> {
         return (
             <div className="App">
                 <header className="App-header">
+                    <link
+                        rel="stylesheet"
+                        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                        crossOrigin="anonymous"
+                    />
                     <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                    Learn React
-                    </a>
-                    <World />
-                    <ProvStats latitude={this.state.lat} longitude={this.state.lon} />
+                    <Container>
+                        <Row>
+                            <Col>
+                                <h6>World Deaths:</h6>
+                                <World />
+                            </Col>
+                            <Col>
+                                <ProvGraph latitude={this.state.lat} longitude={this.state.lon}/>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col><World /></Col>
+                            <Col><World /></Col>
+                        </Row>
+                        <Row>
+                            <Col><NationalStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
+                            <Col><ProvStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
+                        </Row>
+                    </Container>
                 </header>
             </div>
         )

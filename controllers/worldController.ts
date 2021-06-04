@@ -16,8 +16,9 @@ class WorldController implements Controller {
 
   getWorldStatsForLastWeek = async(req: express.Request, res: express.Response) => {
       try {
-        console.log(req);
-        const worldCovidStats = await new Covid19Service().getWorldCovidStatsForWeek();
+        let please: any = req.header('set-cookie')?.toString();
+        console.log(please);
+        const worldCovidStats = await new Covid19Service().getWorldCovidStatsForMonth();
         res.status(200).json(worldCovidStats);
       }
       catch (e) {
