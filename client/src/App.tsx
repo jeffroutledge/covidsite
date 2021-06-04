@@ -8,20 +8,19 @@ import div, { Col, Container, Row } from 'react-bootstrap';
 import NationalStats from './NationalStats';
 import ProvGraph from './ProvGraph';
 
-class App extends Component<{}, {lat: any, lon: any}> {
-    state = {lat: 0, lon: 0};
+class App extends Component<{}, {lon: any, lat: any}> {
+    state = {lon: 0, lat: 0};
 
-    componentDidMount() {
-        
+    componentDidMount() {  
         navigator.geolocation.getCurrentPosition((position) => {
             this.setState({
-                lat: position.coords.latitude,
-                lon: position.coords.longitude
+                lon: position.coords.longitude,
+                lat: position.coords.latitude
             });
+            console.log(`Longitude: ${this.state.lon} Latitude: ${this.state.lat}`);
         });
     }
     componentWillUnmount() {
-        // fix Warning: Can't perform a React state update on an unmounted component
         this.setState = (state,callback)=>{
             return;
         };
@@ -44,7 +43,7 @@ class App extends Component<{}, {lat: any, lon: any}> {
                                 <World />
                             </Col>
                             <Col>
-                                <ProvGraph latitude={this.state.lat} longitude={this.state.lon}/>
+                                <ProvGraph longitude={this.state.lon} latitude={this.state.lat}/>
                             </Col>
                         </Row>
                         <Row>
@@ -52,8 +51,8 @@ class App extends Component<{}, {lat: any, lon: any}> {
                             <Col><World /></Col>
                         </Row>
                         <Row>
-                            <Col><NationalStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
-                            <Col><ProvStats latitude={this.state.lat} longitude={this.state.lon} /></Col>
+                            <Col><NationalStats longitude={this.state.lon} latitude={this.state.lat}/></Col>
+                            <Col><ProvStats longitude={this.state.lon} latitude={this.state.lat}/></Col>
                         </Row>
                     </Container>
                 </header>
