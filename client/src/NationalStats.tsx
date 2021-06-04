@@ -19,7 +19,7 @@ export default class NationalStats extends Component<{longitude: any, latitude: 
     async getLocationFromPosition(latitude: number, longitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=nationalstats`;
+            const url = `http://localhost:8080/location/natstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             const tStats: CanadaNationalStats = result;
             return tStats;

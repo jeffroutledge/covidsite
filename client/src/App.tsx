@@ -10,16 +10,6 @@ import ProvGraph from './ProvGraph';
 
 class App extends Component<{}, {lat: any, lon: any}> {
     state = {lat: 0, lon: 0};
-    constructor(props: any) {
-        super(props);
-        // navigator.geolocation.getCurrentPosition((position) => {
-        //     //console.log(this.state.lat);
-        //   this.setState({
-        //     lat: position.coords.latitude,
-        //     lon: position.coords.longitude
-        //   });
-        // });
-    };
 
     componentDidMount() {
         
