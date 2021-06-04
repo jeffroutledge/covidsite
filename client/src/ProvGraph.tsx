@@ -27,7 +27,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getCovidStatsByLocation(latitude: number, longitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=provgraph`;
+            const url = `http://localhost:8080/location/provgraph?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             return result;
         }
@@ -39,7 +39,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
     async getLocationFromPosition(latitude: number, longitude: number): Promise<any> {
 
         try {
-            const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}&component=locationdata`;
+            const url = `http://localhost:8080/location?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
             let result: any = await (await fetch(url)).json();//.json();
             return result;
         }
@@ -48,34 +48,85 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
         }
     }
 
-    render() {
+    private sortData(data: any): any {
+        const sortedData = data?.slice()?.sort((a: any, b: any) => {
+            return this.getTime(new Date(a.attributes.SummaryDate)) - this.getTime(new Date(b.attributes.SummaryDate));
+        });
+        return sortedData;
+    }
+
+    private getDataKeys(): Object {
         let destinationObj = [{}];
-        const data = this?.state?.prov.features;
         Object.assign(destinationObj, this?.state?.prov.features[0].attributes);
         const dataKeys = Object.keys(destinationObj);
         let dropDownMenuItems: any[] = [];
         for(var i = 0; i < dataKeys.length; i++) {
             dropDownMenuItems.push(<Dropdown.Item eventKey={dataKeys[i]}>{dataKeys[i]}</Dropdown.Item>)
         }
-        const sortedData = data?.slice()?.sort((a: any, b: any) => {
-            return this.getTime(new Date(a.attributes.SummaryDate)) - this.getTime(new Date(b.attributes.SummaryDate));
-        });
-        const provName = this?.state?.location?.Territory;
-        let handleSelect=(e: any)=>{
+        return dropDownMenuItems;
+    }
+    
+    private handleSelect=(e: any)=>{
             this.setState({selectedData: e});
-        }
-        
+    }
+
+    private getXTickFormat(data: any): any {
         let domain: any
         let xTickFormat: any;
         if(data !== undefined) {
             domain = d3Extent (data, (d: any)=>new Date(d.attributes.SummaryDate)); 
             const tScale = d3ScaleTime().domain(domain).range([0, 1]);
             xTickFormat = tScale.tickFormat();
+            return xTickFormat;
         }
+    }
 
+    private getYTickFormat(): any {
         const kbDomain: any = [0, (d: any)=>d3Max([d.setsize,d.getsize])];
-            const kbScale = d3ScaleLinear().domain(kbDomain).range([0, 1]);
-            const yTickFormat = kbScale.tickFormat(5,d3Format(".1f").toString());
+        const kbScale = d3ScaleLinear().domain(kbDomain).range([0, 1]);
+        const yTickFormat = kbScale.tickFormat(5,d3Format(".1f").toString());
+        return yTickFormat;
+    }
+    
+    private getProvName(): string | undefined {
+        return this?.state?.location?.Territory;
+    }
+
+    render() {
+        // let destinationObj = [{}];
+        // const data = this?.state?.prov.features;
+        // Object.assign(destinationObj, this?.state?.prov.features[0].attributes);
+        // const dataKeys = Object.keys(destinationObj);
+        // let dropDownMenuItems: any[] = [];
+        // for(var i = 0; i < dataKeys.length; i++) {
+        //     dropDownMenuItems.push(<Dropdown.Item eventKey={dataKeys[i]}>{dataKeys[i]}</Dropdown.Item>)
+        // }
+        // const sortedData = data?.slice()?.sort((a: any, b: any) => {
+        //     return this.getTime(new Date(a.attributes.SummaryDate)) - this.getTime(new Date(b.attributes.SummaryDate));
+        // });
+        // const provName = this?.state?.location?.Territory;
+        // // let handleSelect=(e: any)=>{
+        // //     this.setState({selectedData: e});
+        // // }
+        
+        // let domain: any
+        // let xTickFormat: any;
+        // if(data !== undefined) {
+        //     domain = d3Extent (data, (d: any)=>new Date(d.attributes.SummaryDate)); 
+        //     const tScale = d3ScaleTime().domain(domain).range([0, 1]);
+        //     xTickFormat = tScale.tickFormat();
+        // }
+
+        // const kbDomain: any = [0, (d: any)=>d3Max([d.setsize,d.getsize])];
+        //     const kbScale = d3ScaleLinear().domain(kbDomain).range([0, 1]);
+        //     const yTickFormat = kbScale.tickFormat(5,d3Format(".1f").toString());
+        let provName = this.getProvName();
+        let xTickFormat = this.getXTickFormat(this?.state?.prov.features);
+        let yTickFormat = this.getYTickFormat();
+        let dataKeys = this.getDataKeys()
+        let sortedData = this.sortData(this?.state?.prov.features);
+
+
 
         const renderLineChart = (
             <div>
@@ -84,8 +135,8 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
                 alignRight
                 title={(((this?.state?.selectedData === undefined) ? 'Select a Data Set' : this?.state?.selectedData))}
                 id='drop-down-menu-align-right'
-                onSelect={handleSelect}>
-                    {dropDownMenuItems}
+                onSelect={this.handleSelect}>
+                    {dataKeys}
                 </DropdownButton>
                 <LineChart width={525} height={300} data={sortedData} margin={{ top: 15, right: 10, left: 20, bottom: 25 }}>
                     <XAxis dataKey="attributes.SummaryDate" tickFormatter= {xTickFormat}>

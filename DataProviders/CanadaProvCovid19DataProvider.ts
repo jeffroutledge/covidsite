@@ -19,4 +19,5 @@ class CanadaProvCovid19DataProvider {
         return result.data;
     }
 }
+
 export default CanadaProvCovid19DataProvider;
