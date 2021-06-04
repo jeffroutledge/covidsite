@@ -5,20 +5,18 @@ import TerritoryStats from './Models/TerritoryStats';
 export default class ProvStats extends Component<{longitude: any, latitude: any}, {territoryStats: TerritoryStats}> {
     async componentDidMount(): Promise<void> {
     }
-    async componentWillReceiveProps(nextProps: {latitude: any, longitude: any}): Promise<void> {
-        if (nextProps.latitude !== this.props.latitude && nextProps.longitude !== this.props.latitude) {
-            console.log('GOT TO Lat/Lon !== 0');
-            this.setState({territoryStats: await this.getLocationFromPosition(nextProps.latitude, nextProps.longitude)});
+    async componentDidUpdate(prevProps: {longitude: any, latitude: any}): Promise<void> {
+        if (prevProps.longitude !== this.props.longitude && prevProps.latitude !== this.props.latitude) {
+            this.setState({territoryStats: await this.getLocationFromPosition(this.props.longitude, this.props.latitude)});
         }
     }
     componentWillUnmount() {
-        // fix Warning: Can't perform a React state update on an unmounted component
         this.setState = (state,callback)=>{
             return;
         };
     }
 
-    async getLocationFromPosition(latitude: number, longitude: number): Promise<any> {
+    async getLocationFromPosition(longitude: any, latitude: number): Promise<any> {
 
         try {
             const url = `http://localhost:8080/location/provstats?longitude=${longitude.toPrecision(5)}&latitude=${latitude.toPrecision(5)}`;
