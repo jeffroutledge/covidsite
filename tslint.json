@@ -13,6 +13,7 @@
         "no-bitwise": true,
         "no-conditional-assignment": true,
         "no-consecutive-blank-lines": false,
+        "linebreak-style": [true, "LF"],
         "no-console": {
             "severity": "warning",
             "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
