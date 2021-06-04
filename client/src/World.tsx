@@ -2,18 +2,11 @@ import { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, Label, Tooltip } from 'recharts';
 
 export default class World extends Component<{}, {world: any[]}> {
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({...this.state});
         try {
-            fetch('http://localhost:8080/world')
-                .then(response => response.json())
-                .then(result => {
-                    this.setState({world: result})
-                })
-                .catch(e => {
-                    console.log(e)
-                    this.setState({...this.state})
-                });
+            let result: any = await (await fetch('http://localhost:8080/world')).json();
+            this.setState({world: result});
         }
         catch (e) {
             console.log(e);

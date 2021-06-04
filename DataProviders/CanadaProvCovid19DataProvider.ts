@@ -15,7 +15,6 @@ class CanadaProvCovid19DataProvider {
     }
     public async getCanadaProvCovid19StatsForLastMonth(location: Location, dateFrom: string, dateTo: string) {
         const result = await axios.get(`province_daily_totals/FeatureServer/0/query?where=SummaryDate%20%3E%3D%20TIMESTAMP%20\'${dateFrom}%2000%3A00%3A00\'%20AND%20SummaryDate%20%3C%3D%20TIMESTAMP%20\'${dateTo}%2000%3A00%3A00\'AND%20Province%20%3D%20\'${location.Territory.toUpperCase()}\'&outFields=*&returnGeometry=false&outSR=4326&f=json`, this.config);
-        console.log('ProvGraph API Result: ' + result.data.features[0].attributes.DailyTotals);
         return result.data;
     }
 }

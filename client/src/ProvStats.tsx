@@ -6,7 +6,8 @@ export default class ProvStats extends Component<{longitude: any, latitude: any}
     async componentDidMount(): Promise<void> {
     }
     async componentWillReceiveProps(nextProps: {latitude: any, longitude: any}): Promise<void> {
-        if (nextProps.latitude !== 0 && nextProps.longitude !== 0) {
+        if (nextProps.latitude !== this.props.latitude && nextProps.longitude !== this.props.latitude) {
+            console.log('GOT TO Lat/Lon !== 0');
             this.setState({territoryStats: await this.getLocationFromPosition(nextProps.latitude, nextProps.longitude)});
         }
     }
