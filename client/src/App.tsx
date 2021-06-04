@@ -17,7 +17,6 @@ class App extends Component<{}, {lon: any, lat: any}> {
                 lon: position.coords.longitude,
                 lat: position.coords.latitude
             });
-            console.log(`Longitude: ${this.state.lon} Latitude: ${this.state.lat}`);
         });
     }
     componentWillUnmount() {

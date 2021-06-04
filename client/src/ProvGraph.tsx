@@ -61,7 +61,7 @@ export default class ProvGraph extends Component<{longitude: any, latitude: any}
         const dataKeys = Object.keys(destinationObj);
         let dropDownMenuItems: any[] = [];
         for(var i = 0; i < dataKeys.length; i++) {
-            dropDownMenuItems.push(<Dropdown.Item eventKey={dataKeys[i]}>{dataKeys[i]}</Dropdown.Item>)
+            dropDownMenuItems.push(<Dropdown.Item eventKey={dataKeys[i]} key={dataKeys[i]}>{dataKeys[i]}</Dropdown.Item>)
         }
         return dropDownMenuItems;
     }
