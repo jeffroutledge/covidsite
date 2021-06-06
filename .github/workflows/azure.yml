@@ -53,5 +53,6 @@ jobs:
         with:
           app-name: 'djcovidsite'
           slot-name: 'production'
+          zip-deploy: 'node-app.zip'
           publish-profile: \${{ secrets.AzureAppService_PublishProfile_152BDE8ACD9049A498455CA2D6A01605 }}
           package: .
