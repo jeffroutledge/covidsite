@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-    workflow-dispatch:
+  workflow-dispatch:
 
 jobs:
   build-and-deploy:
