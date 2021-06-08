@@ -7,7 +7,7 @@ on:
   push:
     branches: [ main, devlop, user/* ]
   pull_request:
-    branches: [ mai, devlop ]
+    branches: [ main, devlop ]
 
 jobs:
   build:
