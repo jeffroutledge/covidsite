@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 class CanadaCovid19DataProvider {
-        private config = {
+    private config = {
         baseURL: 'https://services9.arcgis.com/pJENMVYPQqZZe20v/arcgis/rest/services',
         timeout: 1000,
         headers: {
             'content-type': 'JSON',
         }
-    };
+    }
     public async getDataForProv(provTerritory: string) {
         const result = await axios.get(`Join_Features_to_Enriched_Population_Case_Data_By_Province_Polygon/FeatureServer/0/query?where=NAME%20%3D%20\'${provTerritory}\'&outFields=OBJECTID,NAME,Recovered,Tests,Last_Updated,SourceURL,ActiveCases,Hospitalized,ICU,ICUVent,Deaths,Case_Total,GlobalID_2,Vaccinated,Abbreviation&returnGeometry=false&outSR=&f=json`, this.config);
         return result.data;
